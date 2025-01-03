@@ -1,0 +1,60 @@
+body {
+    background-color: #e6f2ff; /* Light blue background for a calming effect */
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #ffffff; /* White background for contrast */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    padding: 30px;
+    max-width: 480px; /* Restrict max width for better readability */
+    width: 100%;
+    text-align: center; /* Center align text */
+}
+
+h1 {
+    color: #0056b3; /* Darker blue for headings */
+    margin-bottom: 20px;
+    font-size: 2em; /* Increase heading size */
+}
+
+.video-container {
+    margin-bottom: 20px; /* Space below video */
+    border: 2px solid #0056b3; /* Blue border for video */
+    border-radius: 10px; /* Rounded corners for video */
+    overflow: hidden; /* Ensures video fits nicely */
+}
+
+video {
+    width: 100%; /* Full width of the container */
+    border-radius: 10px; /* Rounded corners for video */
+}
+
+button {
+    background-color: #0056b3; /* Blue background for button */
+    color: white; /* White text */
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+button:hover {
+    background-color: #004494; /* Darker blue on hover */
+}
+
+.feedback {
+    margin-top: 20px; /* Space above feedback */
+    font-size: 1.2em; /* Increase feedback text size */
+    color: #333; /* Dark color for contrast */
+}

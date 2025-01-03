@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Mental Health App</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Mental Health Tracker</h1>
+        <p>Welcome! Let's track your mental health status.</p>
+        <button id="trackButton">Live Track</button>
+    </div>
+
+    <script>
+        document.getElementById('trackButton').onclick = function() {
+            window.location.href = "/live_track";
+        };
+    </script>
+</body>
+</html>

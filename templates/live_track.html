@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Live Tracking</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Live Tracking</h1>
+        <div class="video-container">
+            <video id="video" width="640" height="480" autoplay></video>
+        </div>
+        <button id="captureButton">Capture</button>
+        <div id="feedback" class="feedback"></div>
+    </div>
+
+    <script>
+        const video = document.getElementById('video');
+        const captureButton = document.getElementById('captureButton');
+        const feedbackDiv = document.getElementById('feedback');
+
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => {
+                video.srcObject = stream;
+            })
+            .catch(err => {
+                console.error("Error accessing the camera: ", err);
+            });
+
+        captureButton.onclick = function() {
+            const canvas = document.createElement('canvas');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            const context = canvas.getContext('2d');
+            context.drawImage(video, 0, 0);
+
+            // Convert canvas to image data URL
+            const imageDataUrl = canvas.toDataURL('image/png');
+
+            // Send image data to the server for analysis
+            fetch('/analyze_image', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `image=${encodeURIComponent(imageDataUrl.split(',')[1])}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                const { emotion, suggestion } = data;
+                feedbackDiv.innerText = `Detected Emotion: ${emotion}. Suggestion: ${suggestion}`;
+            })
+            .catch(error => {
+                console.error("Error analyzing image: ", error);
+                feedbackDiv.innerText = "An error occurred while analyzing the image.";
+            });
+        };
+    </script>
+</body>
+</html>
