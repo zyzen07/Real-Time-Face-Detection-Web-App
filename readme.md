@@ -12,9 +12,8 @@ The primary goal of this project is to assist users in tracking their emotional 
 
 Frontend: HTML, CSS, JavaScript
 
-Backend: Python (Flask)
-
-Database: MySQL Workbench
+Backend: Python  
+ 
 
 Computer Vision: OpenCV for face detection
 
