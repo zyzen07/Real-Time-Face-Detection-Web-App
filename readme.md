@@ -18,7 +18,8 @@ Database: MySQL Workbench
 
 Computer Vision: OpenCV for face detection
 
-📷 Demo Image
+📷 Demo Image go to demo images foler 
+
 
 Sample image showcasing the system in action:
 
